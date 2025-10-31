@@ -13,12 +13,12 @@ export default defineConfig({
     }),
 
     // @ts-ignored
-    // Components({
-    //   dirs: ['src/components', 'src/layouts'],
-    //   extensions: ['vue'],
-    //   deep: true,
-    //   dts: 'src/components.d.ts',
-    // }),
+    Components({
+      dirs: ['src/components', 'src/layouts'],
+      extensions: ['vue'],
+      deep: true,
+      dts: 'src/components.d.ts',
+    }),
   ],
   resolve: {
     alias: {
