@@ -1,0 +1,14 @@
+# Prettier ignore file
+node_modules/
+dist/
+.astro/
+*.lock
+*.log
+
+# Build outputs
+build/
+out/
+
+# Auto-generated files
+auto-imports.d.ts
+components.d.ts
