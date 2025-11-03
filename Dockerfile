@@ -26,7 +26,7 @@ FROM base
 
 ENV PORT=$PORT
 
-COPY --from=builder /app/.output /app/.output
+COPY --from=builder /app/.dist /app/.dist
 # Optional, only needed if you rely on unbundled dependencies
 # COPY --from=builder /app/node_modules /app/node_modules
 
