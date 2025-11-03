@@ -1,8 +1,9 @@
 ---
-import '@/assets/styles/_global.scss';
+import '@/assets/styles/_global.css';
+import '@/assets/styles/components/index.css';
 ---
 
-<html lang="en">
+<html lang="en" class="bg-dark-theme-bg text-dark-theme-text">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -16,10 +17,16 @@ import '@/assets/styles/_global.scss';
 </html>
 
 <style>
+  @import 'tailwindcss' reference;
+
   html,
   body {
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  body {
+    @apply text-sm;
   }
 </style>

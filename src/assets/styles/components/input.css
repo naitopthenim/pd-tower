@@ -1,0 +1,14 @@
+.input-text {
+  @apply relative border-0 border-b px-[34px] py-[25px] transition-colors select-none;
+  border-color: var(--dark-theme-input-border);
+
+  &:focus-visible,
+  &:focus {
+    @apply !outline-none select-none;
+    border-color: var(--black);
+  }
+
+  &::placeholder {
+    color: var(--dark-theme-input-placeholder);
+  }
+}

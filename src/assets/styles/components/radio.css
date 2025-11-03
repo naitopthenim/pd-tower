@@ -1,0 +1,3 @@
+.radio-button .radio-input {
+  @apply h-5 w-5;
+}

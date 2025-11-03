@@ -12,6 +12,14 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AutoImportShowcase: typeof import('./components/AutoImportShowcase.vue')['default']
-    TailwindDemo: typeof import('./components/TailwindDemo.vue')['default']
+    FloorPlan: typeof import('./components/FloorPlan.vue')['default']
+    FormInfo: typeof import('./components/FormInfo.vue')['default']
+    Gallery: typeof import('./components/Gallery.vue')['default']
+    InputText: typeof import('./components/InputText.vue')['default']
+    Radio: typeof import('./components/Radio.vue')['default']
+    RadioButton: typeof import('./components/RadioButton.vue')['default']
+    SelectCountry: typeof import('./components/SelectCountry.vue')['default']
+    Tab: typeof import('./components/Tab.vue')['default']
+    TextTitle: typeof import('./components/TextTitle.vue')['default']
   }
 }

@@ -30,7 +30,7 @@ onMounted(() => {
       <!-- ✨ These Vue components are AUTO-IMPORTED! No import statements needed! -->
       <div class="rounded-lg bg-white p-4 shadow-sm">
         <h3 class="mb-2 text-lg font-semibold">Auto-Imported Components:</h3>
-        <TailwindDemo />
+        <!-- <TailwindDemo /> -->
       </div>
 
       <!-- ✨ Vue composables are also AUTO-IMPORTED! -->
@@ -62,7 +62,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="text-sm italic text-gray-500">
+      <div class="text-sm text-gray-500 italic">
         💡 All Vue composables (ref, computed, watch, onMounted) and components
         are auto-imported - no import statements needed in this .vue file!
       </div>

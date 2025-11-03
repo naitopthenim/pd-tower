@@ -1,0 +1,19 @@
+.text-title {
+  width: auto;
+
+  font-size: 79px;
+  line-height: 75px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  /* background: linear-gradient(90deg, #4a5568 0%, #ffffff 50%, #4a5568 100%); */
+  background: linear-gradient(
+    231deg,
+    rgba(170, 182, 192, 1),
+    rgba(255, 255, 255, 1),
+    rgba(170, 182, 192, 1)
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

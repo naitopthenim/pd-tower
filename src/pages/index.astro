@@ -1,27 +1,21 @@
 ---
 // ✨ AUTO-GENERATED IMPORTS (run: pnpm auto-import)
-
-import Welcome from '../components/Welcome.astro';
-import AutoImportShowcase from '../components/AutoImportShowcase.vue';
+import FormInfo from '../components/FormInfo.vue';
+import Gallery from '../components/Gallery.vue';
 import Default from '../layouts/Default.astro';
 // ✨ NO IMPORTS NEEDED! Components are auto-imported like Nuxt!
 // Layout, Welcome, AutoImportShowcase will be automatically imported
 ---
 
 <Default>
-  <Welcome />
-  <div class="container mx-auto space-y-8 py-8">
-    <div class="text-center">
-      <h1 class="mb-4 bg-red-500 text-3xl font-bold text-gray-800">
-        Auto-Import Comparison
-      </h1>
-      <p class="mb-8 text-gray-600">
-        See the difference between Astro files (need imports) vs Vue files (TRUE
-        auto-imports)
-      </p>
-    </div>
-
-    <!-- This Vue component demonstrates TRUE auto-imports -->
-    <AutoImportShowcase client:load />
+  <!-- Text title -->
+  <div class="flex w-full justify-center">
+    <h1 class="text-title">Visual Showcase</h1>
   </div>
+
+  <!-- gallery -->
+  <Gallery client:load />
+
+  <!-- form info -->
+  <FormInfo client:load />
 </Default>

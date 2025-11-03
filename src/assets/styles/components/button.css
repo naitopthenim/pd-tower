@@ -1,0 +1,22 @@
+button,
+.btn {
+  transition: background-color 0.3s ease;
+  @apply cursor-pointer px-4 py-[15px];
+  background-color: var(--dark-theme-btn-bg);
+  color: var(--dark-theme-btn-text);
+  min-width: 213px;
+
+  &:hover {
+    background-color: var(--dark-theme-btn-hover-bg);
+  }
+}
+
+button[variant='outlined'],
+.btn[variant='outlined'] {
+  background-color: transparent;
+  border: 1px solid var(--dark-theme-border);
+  color: var(--dark-theme-text);
+  &:hover {
+    background-color: var(--dark-theme-secondary-btn-hover-bg);
+  }
+}

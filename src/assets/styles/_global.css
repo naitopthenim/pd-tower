@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+/* @import 'tailwindcss/preflight';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/theme'; */
+
+@import '_variable.css';
+@import '_wrapper.css';
+@import 'text.css';
+
+/* Tailwind v4 custom color tokens */
+@theme {
+  /* Base */
+  --color-white: var(--white);
+  --color-black: var(--black);
+
+  /* Dark theme */
+  --color-dark-theme-bg: var(--dark-theme-bg);
+  --color-dark-theme-text: var(--dark-theme-text);
+  --color-dark-theme-btn-bg: var(--dark-theme-btn-bg);
+  --color-dark-theme-btn-text: var(--dark-theme-btn-text);
+  --color-dark-theme-btn-hover-bg: var(--dark-theme-btn-hover-bg);
+  --color-dark-theme-input-placeholder: var(--dark-theme-input-placeholder);
+  --color-dark-theme-secondary-color: var(--dark-theme-secondary-color);
+  --color-dark-theme-border: var(--dark-theme-border);
+  --color-dark-theme-secondary-btn-hover-bg: var(
+    --dark-theme-secondary-btn-hover-bg
+  );
+  --color-dark-theme-input-border: var(--dark-theme-input-border);
+  --color-dark-theme-select-border: var(--dark-theme-select-border);
+
+  /* Light theme */
+  --color-light-theme-bg: var(--light-theme-bg);
+  --color-light-theme-text: var(--light-theme-text);
+}

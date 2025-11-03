@@ -1,0 +1,11 @@
+select,
+.select {
+  /* max-height: 400px;
+  overflow-y: auto; */
+  button[variant='outlined'],
+  .btn[variant='outlined'] {
+    @apply border-0 border-b bg-transparent;
+    border-color: var(--dark-theme-select-border);
+    color: var(--black);
+  }
+}
