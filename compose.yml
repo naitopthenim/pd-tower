@@ -1,28 +1,36 @@
+version: '1'
+
+networks:
+  app-tier:
+    driver: bridge
+
 services:
-  application:
-    restart: unless-stopped
-    expose:
-      - 3000
+  astro:
     build:
       context: .
-    env_file:
-      - .env
-
-  reverse-proxy:
     restart: unless-stopped
-    image: staticfloat/nginx-certbot
+    networks:
+      - app-tier
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    # environment:
+    #   - SERVER_NAME=${SERVER_NAME:-localhost}
+    cap_add:
+      - NET_ADMIN
     ports:
-      - 80:8080/tcp
-      - 443:8443/tcp
-    environment:
-      - CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
-      - CERTBOT_EMAIL=${CERTBOT_EMAIL}
-      - ENVSUBST_VARS=CERTBOT_DOMAIN
+      - '3000:80'
+      # - '443:443'
+      # - '443:443/udp'
     volumes:
-      - letsencrypt:/etc/letsencrypt
-      - ./nginx.conf:/etc/nginx/user.conf.d/nginx.conf:ro
-    depends_on:
-      - application
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app-tier
 
 volumes:
-  letsencrypt:
+  caddy_data:
+  caddy_config:

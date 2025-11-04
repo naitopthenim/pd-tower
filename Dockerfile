@@ -26,9 +26,11 @@ FROM base
 
 ENV PORT=$PORT
 
-COPY --from=builder /app/.dist /app/.dist
-# Optional, only needed if you rely on unbundled dependencies
-# COPY --from=builder /app/node_modules /app/node_modules
+EXPOSE $PORT
+
+COPY --from=builder /app/dist /app/dist
+# Copy node_modules for Astro SSR runtime dependencies
+COPY --from=builder /app/node_modules /app/node_modules
 
 COPY --from=builder /app/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
