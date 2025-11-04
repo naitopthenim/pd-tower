@@ -1,39 +1,37 @@
+# Stage 1: Build Astro static site
 ARG NODE_VERSION=22.14.0
-
-FROM node:${NODE_VERSION}-alpine as base
-
-ARG PORT=3000
-
-ENV NODE_ENV=production
+FROM node:${NODE_VERSION}-alpine AS builder
 
 WORKDIR /app
-# Build
-FROM base as builder
 
+# ติดตั้ง pnpm
 RUN npm install -g pnpm
 
-COPY --link package.json .
-COPY --link pnpm-lock.yaml .
+# Copy dependencies
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
-RUN pnpm install --production=false
+# Copy source code
+COPY . .
 
-COPY --link . .
-
+# Build static site
 RUN pnpm build
 
-# Run
-FROM base
+# Stage 2: Serve with Caddy
+FROM caddy:latest
 
-ENV PORT=$PORT
+# Copy built static site ไปที่ /srv (Caddy root)
+COPY --from=builder /app/dist /srv
 
-EXPOSE $PORT
+# คัดลอก Caddyfile
+COPY Caddyfile /etc/caddy/Caddyfile
 
-COPY --from=builder /app/dist /app/dist
-# Copy node_modules for Astro SSR runtime dependencies
-COPY --from=builder /app/node_modules /app/node_modules
-
-COPY --from=builder /app/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-
+# คัดลอก entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
+# Expose default port
+EXPOSE 80
+
+# ใช้ entrypoint script
 ENTRYPOINT ["docker-entrypoint"]

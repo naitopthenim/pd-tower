@@ -1,4 +1,5 @@
 :80 {
-  encode gzip
-  reverse_proxy astro:3000
+    root * /srv
+    encode gzip
+    file_server
 }

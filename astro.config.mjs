@@ -3,14 +3,15 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import { mergeConfig } from 'vite';
 import viteConfig from './vite.config.ts';
-import node from '@astrojs/node';
+// import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server', // Enable SSR mode
-  adapter: node({
-    mode: 'standalone', // or 'middleware' if using with Express/Fastify
-  }),
+  // NOTE: Support server-side rendering (SSR) with Astro and Node.js adapter
+  // output: 'server', // Enable SSR mode
+  // adapter: node({
+  //   mode: 'standalone', // or 'middleware' if using with Express/Fastify
+  // }),
 
   prefetch: {
     prefetchAll: true,

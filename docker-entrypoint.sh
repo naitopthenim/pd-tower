@@ -1,41 +1,14 @@
 #!/bin/sh
 set -e
 
-# Check if npm is installed
-if ! command -v npm &> /dev/null; then
-    echo "Error: npm is not installed. Please install npm before running this script."
-    exit 1
-fi
-
-echo "Install PM2 globally"
-npm install pm2@latest -g
-
-# Define PORT or pass it as an argument
-export PORT=${PORT:-3000}
-
-tee /app/ecosystem.config.js <<EOF
-module.exports = {
-  apps: [
-    {
-      name: 'nuxt',
-      port: '${PORT}',
-      exec_mode: 'cluster',
-      instances: 'max',
-      script: './dist/server/entry.mjs',
-    },
-  ],
-};
-EOF
-
-# Check if the project directory exists
-if [ -d "/app/dist" ]; then
-  echo "Starting PM2"
-  pm2-runtime start ecosystem.config.js
-  pm2-runtime ls
-  pm2-runtime logs
-else
-  echo "Error: Project directory not found."
+# ตรวจสอบไฟล์ static build
+if [ ! -d "/srv" ] || [ -z "$(ls -A /srv)" ]; then
+  echo "Error: Static site not found in /srv. Did you forget to run pnpm build?"
   exit 1
 fi
 
-exec docker-pm2-entrypoint "$@"
+# กำหนด environment variables (optional)
+export CUSTOM_ENV=${CUSTOM_ENV:-default_value}
+
+echo "Starting Caddy to serve static files..."
+exec caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
