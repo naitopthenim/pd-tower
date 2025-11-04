@@ -4,9 +4,14 @@ services:
   caddy:
     build:
       context: .
-    restart: unless-stopped
+    restart:
+      unless-stopped
+      # environment:
+    #   - SERVER_NAME=${SERVER_NAME:-localhost}
     ports:
       - '3000:80'
+        # - '443:443'
+      # - '443:443/udp'
     volumes:
       - caddy_data:/data
       - caddy_config:/config
